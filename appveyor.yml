@@ -23,3 +23,5 @@ after_test:
 artifacts:
   - path: 'PythonAPI\dist\*.whl'
     type: File
+
+skip_non_tags: true

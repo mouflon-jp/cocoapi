@@ -1,0 +1,25 @@
+environment:
+
+  matrix:
+    - PYTHON: "C:\\Python37"
+    - PYTHON: "C:\\Python37-x64"
+
+install:
+  - "%PYTHON%\\python.exe -m pip install --upgrade pip"
+  - "%PYTHON%\\python.exe -m pip install wheel"
+  - "%PYTHON%\\python.exe -m pip install numpy"
+  - "%PYTHON%\\python.exe -m pip install Cython"
+  
+build: off
+
+test_script:
+  echo Skipped Tests
+
+after_test:
+  - "cd PythonAPI"
+  - "%PYTHON%\\python.exe setup.py bdist_wheel"
+  - "tree /A /F"
+
+artifacts:
+  - path: 'PythonAPI\dist\*.whl'
+    type: File
